@@ -51,11 +51,11 @@ func main() {
         },
    })
    
-   window1 := app.NewWebviewWindowWithOptions(application.WebviewWindowOptions{
+   window1 :=  app.Window.NewWithOptions(application.WebviewWindowOptions{
        Title:  "Window 1",
    })
    
-   window2 := app.NewWebviewWindowWithOptions(application.WebviewWindowOptions{
+   window2 :=  app.Window.NewWithOptions(application.WebviewWindowOptions{
        Title:  "Window 2",
    })
    
