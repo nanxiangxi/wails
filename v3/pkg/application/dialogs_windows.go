@@ -196,13 +196,22 @@ func (m *windowSaveFileDialog) show() (chan string, error) {
 		func() (cfd.Dialog, error) {
 			return cfd.NewSaveFileDialog(config)
 		}, false)
+
 	go func() {
 		defer handlePanic()
-		files <- result.(string)
+		var finalResult string
+		if result != nil {
+			if strResult, ok := result.(string); ok {
+				finalResult = strResult
+			}
+		}
+		files <- finalResult
 		close(files)
 	}()
+
 	return files, err
 }
+
 
 func calculateMessageDialogFlags(options MessageDialogOptions) uint32 {
 	var flags uint32
